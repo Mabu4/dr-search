@@ -1,0 +1,26 @@
+.startpage {
+    padding-top: 2rem;
+    background-color: rgba(219, 218, 255, 0.526);
+    .search-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        mat-form-field {
+            margin: 0 0.5rem;
+            flex-grow: 1;
+            &:first-child {
+                margin-left: 0;
+            }
+            mat-label {
+                font-size: 1rem;
+            }
+        }
+        button {
+            margin-left: 0.5rem;
+            height: 3.25rem;
+           
+        }
+        
+    }
+    
+}
