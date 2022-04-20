@@ -1,58 +1,70 @@
 <div class="primary-container">
     <div class="start-page">
-        <h2>Alle Ärzte</h2>
-        <mat-card class="card">
-            <div class="picture">
-                <img src="../../assets/img/profile.jpg">
-                <p>Privatpraxis</p>
-            </div>
-            <div class="left-section">
-                <h3>Dr. med. Peter Lustig</h3>
-                <p class="type">Arzt, Hautarzt (Dermatologe)</p>
-                <p class="address">
-                    Hauptstr. 43 <br>
-                    53423 Lachmahausen
-                </p>
-                <div class="description">
-                    <div class="profile">
-                        <mat-icon>assignment_ind</mat-icon>
-                        <div>Profil</div>
+        <div *ngIf="checkForArray">
+            <h2>Alle Ärzte</h2>
+            <mat-card class="card" *ngFor="let doc of allDocs; let i = index">
+                <div class="picture">
+                    <img src="../../assets/{{ doc.img }}">
+                    <p>{{allInfos[i].type}}</p>
+                </div>
+                <div class="left-section">
+                    <h3>{{doc.title}} {{doc.first_name}} {{doc.last_name}}</h3>
+                    <p class="type">{{doc.specialities[0]}}<span *ngIf="doc.specialities[1]">, {{doc.specialities[1]}}</span></p>
+                    <p class="address">
+                        {{doc.street}} <br>
+                        <span *ngIf="doc.zipcode > 1">{{doc.zipcode}}</span> {{doc.city}}
+                    </p>
+                    <div class="description">
+                        <div class="profile">
+                            <mat-icon>assignment_ind</mat-icon>
+                            <div>Profil</div>
+                        </div>
+                        <div class="note">
+                            <span>Note</span> 
+                            <div>{{allInfos[i].note}}</div>
+                        </div>
+                        <div class="ratings">
+                            {{allInfos[i].rating}} Bewertungen
+                        </div>
                     </div>
-                    <div class="note">
-                        <span>Note</span> 
-                        <div>1,4</div>
-                    </div>
-                    <div class="ratings">
-                        45 Bewertungen
+                    <div class="themes">
+                        <div class="box">
+                            <div>
+                                {{allInfos[i].first}}
+                            </div>
+                            <span>&#124;</span>
+                            <div>
+                                {{allInfos[i].second}}
+                            </div>
+                            <span>&#124;</span>
+                            <div>
+                                {{allInfos[i].third}}
+                            </div>
+                            <span>&#124;</span>
+                        </div>
+                        <mat-icon>more_horiz</mat-icon>
                     </div>
                 </div>
-                <div class="themes">
-                    <div class="box">
-                        <div>
-                            Photodynamische Therapie
-                        </div>
-                        <span>&#124;</span>
-                        <div>
-                            Allergologie
-                        </div>
-                        <span>&#124;</span>
-                        <div>
-                            Akne
-                        </div>
-                        <span>&#124;</span>
-                    </div>
-                    <mat-icon>more_horiz</mat-icon>
+                <div class="right-section">
+                    <mat-list role="list">
+                        <div mat-subheader>Öffnungszeiten</div>
+    
+                        <mat-list-item class="opening-list" role="listitem">Montag: {{doc.opening_hours.monday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Dienstag: {{doc.opening_hours.tuesday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Mittwoch: {{doc.opening_hours.wednesday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Donnerstag: {{doc.opening_hours.thursday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Freitag: {{doc.opening_hours.friday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem" *ngIf="doc.opening_hours.saturday !== 'closed'">Samstag: {{doc.opening_hours.saturday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem" *ngIf="doc.opening_hours.sunday !== 'closed'">Sonntag: {{doc.opening_hours.sunday}}</mat-list-item>
+                    </mat-list>
                 </div>
-            </div>
-            <div class="right-section">
+            </mat-card>
+        </div>
+        <div *ngIf="!checkForArray">
+            <h1>Die Seite konnte nicht geladen werden. <br>
+            Bitte versuchen Sie es später nochmal</h1>
 
-            </div>
-            
-        </mat-card>
-
-
-
-
+        </div>
 
     </div>
     

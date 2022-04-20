@@ -5,6 +5,7 @@
     }
     .card {
         display: flex;
+        margin-bottom: 2rem;
         .picture {
             margin-right: 1.15rem;
             img {
@@ -124,6 +125,10 @@
                    }
                 }
             }
+        }
+        .opening-list {
+            white-space: nowrap;
+            margin: -1rem 0rem;
         }
     }
 }
