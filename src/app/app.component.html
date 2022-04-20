@@ -13,5 +13,31 @@
   </div>
 </mat-toolbar>
 
+<div class="search">
+  <div class="primary-container">
+      <form class="search-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Fachgebiet / Erkrankung</mat-label>
+            <input matInput placeholder="">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Ort</mat-label>
+              <input matInput placeholder="">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Buchung</mat-label>
+              <mat-select>
+                <mat-option value="one">telefonisch & online</mat-option>
+                <mat-option value="two">nur online</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary">
+              <mat-icon aria-hidden="false">search</mat-icon>
+              Suchen
+          </button>
+      </form>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
 
