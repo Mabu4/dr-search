@@ -5,7 +5,7 @@ import { StartpageComponent } from './startpage/startpage.component';
 
 const routes: Routes = [
   {path: '', component: StartpageComponent},
-  {path: 'doctor-detail', component: DoctorDetailComponent},
+  {path: 'doctor-detail/:id', component: DoctorDetailComponent},
 ];
 
 @NgModule({
