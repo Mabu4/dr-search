@@ -1,6 +1,6 @@
 <div class="primary-container">
-    <div class="start-page">
-        <div *ngIf="checkForArray">
+    <div *ngIf="checkForArray" class="start-page">
+        <div>
             <h2>Alle Ärzte</h2>
             <mat-card class="card" *ngFor="let doc of allDocs; let i = index">
                 <div class="picture">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="right-section">
                     <mat-list role="list">
-                        <div mat-subheader>Öffnungszeiten</div>
+                        <div class="list-header" mat-subheader>Öffnungszeiten</div>
     
                         <mat-list-item class="opening-list" role="listitem">Montag: {{doc.opening_hours.monday}}</mat-list-item>
                         <mat-list-item class="opening-list" role="listitem">Dienstag: {{doc.opening_hours.tuesday}}</mat-list-item>
@@ -68,6 +68,12 @@
 
         </div>
 
+    </div>
+    <div *ngIf="!checkForArray">
+        <h1>
+            Die Seite konnte nicht geladen werden <br>
+            Bitte versuchen sie es später nochmal
+        </h1>
     </div>
     
 </div>

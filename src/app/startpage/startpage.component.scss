@@ -126,9 +126,17 @@
                 }
             }
         }
-        .opening-list {
-            white-space: nowrap;
-            margin: -1rem 0rem;
+        .right-section {
+            padding-left: 2rem;
+            .list-header {
+                color: rgba($color: #000000, $alpha: 0.45);
+                font-size: 1.1rem;
+            }
+            .opening-list {
+                white-space: nowrap;
+                margin: -1rem 0rem;
+            }
         }
+        
     }
 }

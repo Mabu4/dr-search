@@ -65,7 +65,6 @@ export class StartpageComponent implements OnInit {
       let response = await fetch('http://maximilian-budziat.developerakademie.net/doctor-database/get_doctors.php');
       this.allDocs = await response.json();
       this.checkForArray = Array.isArray(this.allDocs);
-      console.log(this.allDocs);
   }
 
 
