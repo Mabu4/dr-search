@@ -3,7 +3,15 @@
 <mat-toolbar color="primary" class="header">
   <div class="primary-container header-container"> 
     <img src="../assets/img/logo.png">
-    <ul>
+    <mat-icon class="menu" (click)="menu.classList.toggle('d-none')" aria-hidden="false">menu</mat-icon>
+    <ul class="desktop-list">
+      <li>Arztsuche</li>
+      <li>Termin buchen</li>
+      <li>Ratgeber</li>
+      <li>Für Ärzte</li>
+      <li>Login</li>
+    </ul>
+    <ul class="mobile-list d-none" #menu>
       <li>Arztsuche</li>
       <li>Termin buchen</li>
       <li>Ratgeber</li>

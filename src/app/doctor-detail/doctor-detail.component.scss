@@ -198,3 +198,99 @@
         }
     }
 }
+
+@media(max-width: 50em){
+    .header {
+        .bottom-section {
+            flex-direction: column;
+            .left-section{
+                display: flex;
+                align-items: center;
+                .img-outer {
+                    margin-left: 0;
+                    margin-top: -5rem;
+                    img {
+                        width: 7rem;
+                        height: 9rem;
+                    }
+                }
+                .name-description {
+                    padding-left: 1rem;
+                    h3 {
+                        font-size: 1.35rem;
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+            .right-section {
+                text-align: left;
+                padding-right: 0;
+                display: flex;
+                align-items: center;
+                padding-top: 2.5rem;
+                .note {
+                    b {
+                        font-size: 1.35rem;
+                        font-weight: 500;
+                        margin-right: 0.5rem;
+                    }
+                    span {
+                        font-size: 1.35rem;
+                        margin-right: 2rem;
+                    }
+                }
+                .ratings {
+                    margin-top: 0;
+                    font-size: 1rem;
+                    mat-icon {
+                        margin-right: 0.75rem;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    .informations {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 1rem;
+        padding-top: 0;
+        .left-box {
+            flex-wrap: wrap;
+            flex-grow: 1;
+            mat-icon {
+                padding-right: 0.75rem;
+            }
+            .call {
+                padding-top: 1rem;
+                margin-right: 1.5rem;
+                margin-left: 0;
+            }
+            .home {
+                padding-top: 1rem;
+                margin-left: 0;
+                margin-right: 1.5rem;
+            }
+            .insurance {
+                white-space: nowrap;
+                margin-left: 0;
+                padding-top: 1rem;
+            }
+        }
+        button {
+            margin-top: 1rem;
+            mat-icon {
+                padding-right: 0.5rem;
+            }
+        }
+    }
+    .opening {
+        padding-left: 0;
+        .list {
+            padding-left: 0;
+        }
+    }
+}

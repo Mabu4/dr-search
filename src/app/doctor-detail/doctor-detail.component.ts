@@ -18,7 +18,7 @@ export class DoctorDetailComponent implements OnInit {
   doc: any = [];
   infos: any = [];
   checkForArray = true;
-
+  isLoaded = false;
 
   ngOnInit(): void {
       this.route.paramMap.subscribe(paraMap => {
@@ -39,9 +39,8 @@ export class DoctorDetailComponent implements OnInit {
 
   getDoc(){
     this.doc = this.allDocs.find((doc) => doc.id == this.docId);
-    console.log(this.doc);
     this.infos = this.allInfos[this.docId - 1];
-    console.log(this.infos);
+    this.isLoaded = true;
   }
 
 }

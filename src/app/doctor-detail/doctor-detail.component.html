@@ -1,107 +1,109 @@
 <div class="primary-container">
-    <div class="back-to-list">
-        <button [routerLink]="['/']" mat-icon-button>
-            <mat-icon>arrow_back_ios</mat-icon>
-        </button>
-        <span>
-            Liste
-        </span>
-    </div>
-    <div class="header" *ngIf="checkForArray">
-        <div class="top-section">
-            <img src="../../assets/img/header.jpg">
+    <div *ngIf="isLoaded">
+        <div class="back-to-list">
+            <button [routerLink]="['/']" mat-icon-button>
+                <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+            <span>
+                Liste
+            </span>
         </div>
-        <div class="bottom-section">
-            <div class="left-section">
-                <div class="img-outer">
-                    <img src="../../assets/{{doc['img']}}">
-                </div>
-                <div class="name-description">
-                    <h3>{{doc['title']}} {{doc['first_name']}} {{doc['last_name']}}</h3>
-                    <p>
-                        <span *ngFor="let speciality of doc['specialities']; let i = index">
-                            <span *ngIf="i == 1">
-                                , 
+        <div class="header" *ngIf="checkForArray">
+            <div class="top-section">
+                <img src="../../assets/img/header.jpg">
+            </div>
+            <div class="bottom-section">
+                <div class="left-section">
+                    <div class="img-outer">
+                        <img src="../../assets/{{doc['img']}}">
+                    </div>
+                    <div class="name-description">
+                        <h3>{{doc['title']}} {{doc['first_name']}} {{doc['last_name']}}</h3>
+                        <p>
+                            <span *ngFor="let speciality of doc['specialities']; let i = index">
+                                <span *ngIf="i == 1">
+                                    , 
+                                </span>
+                                {{speciality}}
                             </span>
-                            {{speciality}}
-                        </span>
-                    </p>
+                        </p>
+                    </div>
+                </div>
+                <div class="right-section">
+                    <div class="note">
+                        <b>Note</b>
+                        <span>{{infos['note']}}</span>
+                    </div>
+                    <div class="ratings">
+                        <mat-icon>chat</mat-icon>
+                        <span>{{infos['rating']}} Bewertungen</span>
+                    </div>
                 </div>
             </div>
-            <div class="right-section">
-                <div class="note">
-                    <b>Note</b>
-                    <span>{{infos['note']}}</span>
+            
+        </div>
+        <div class="informations" *ngIf="checkForArray">
+            <div class="left-box">
+                <div class="call">
+                    <mat-icon>call</mat-icon>
+                    <span>02415 / 124598</span>
                 </div>
-                <div class="ratings">
-                    <mat-icon>chat</mat-icon>
-                    <span>{{infos['rating']}} Bewertungen</span>
+                <div class="home">
+                    <mat-icon>home</mat-icon>
+                    <span>Zur Website</span>
                 </div>
+                <div class="insurance">
+                    <mat-icon>payments</mat-icon>
+                    <div>
+                        <span>Gesetzlich Versicherte</span>
+                        <span>Privatversicherte</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                    <span>Bewerten</span>
+                </button>
             </div>
         </div>
-        
-    </div>
-    <div class="informations" *ngIf="checkForArray">
-        <div class="left-box">
-            <div class="call">
-                <mat-icon>call</mat-icon>
-                <span>02415 / 124598</span>
-            </div>
-            <div class="home">
-                <mat-icon>home</mat-icon>
-                <span>Zur Website</span>
-            </div>
-            <div class="insurance">
-                <mat-icon>payments</mat-icon>
+        <div class="opening">
+            <h3>
+                <mat-icon>schedule</mat-icon>
+                <span>Sprechzeiten</span>
+            </h3>
+            <div class="list">
                 <div>
-                    <span>Gesetzlich Versicherte</span>
-                    <span>Privatversicherte</span>
+                    <span>Mo</span>
+                    <span>{{doc['opening_hours']['monday']}}</span>
+                </div>
+                <div>
+                    <span>Di</span>
+                    <span>{{doc['opening_hours']['tuesday']}}</span>
+                </div>
+                <div>
+                    <span>Mi</span>
+                    <span>{{doc['opening_hours']['wednesday']}}</span>
+                </div>
+                <div>
+                    <span>Do</span>
+                    <span>{{doc['opening_hours']['thursday']}}</span>
+                </div>
+                <div>
+                    <span>Fr</span>
+                    <span>{{doc['opening_hours']['friday']}}</span>
+                </div>
+                <div *ngIf="doc['opening_hours']['saturday'] !== 'closed'">
+                    <span>Sa</span>
+                    <span>Uhrzeit</span>
+                </div>
+                <div *ngIf="doc['opening_hours']['sunday'] !== 'closed'">
+                    <span>So</span>
+                    <span>Uhrzeit</span>
                 </div>
                 
             </div>
-        </div>
-        <div>
-            <button mat-raised-button color="primary">
-                <mat-icon>edit</mat-icon>
-                <span>Bewerten</span>
-            </button>
-        </div>
-    </div>
-    <div class="opening">
-        <h3>
-            <mat-icon>schedule</mat-icon>
-            <span>Sprechzeiten</span>
-        </h3>
-        <div class="list">
-            <div>
-                <span>Mo</span>
-                <span>{{doc['opening_hours']['monday']}}</span>
-            </div>
-            <div>
-                <span>Di</span>
-                <span>{{doc['opening_hours']['tuesday']}}</span>
-            </div>
-            <div>
-                <span>Mi</span>
-                <span>{{doc['opening_hours']['wednesday']}}</span>
-            </div>
-            <div>
-                <span>Do</span>
-                <span>{{doc['opening_hours']['thursday']}}</span>
-            </div>
-            <div>
-                <span>Fr</span>
-                <span>{{doc['opening_hours']['friday']}}</span>
-            </div>
-            <div *ngIf="doc['opening_hours']['saturday'] !== 'closed'">
-                <span>Sa</span>
-                <span>Uhrzeit</span>
-            </div>
-            <div *ngIf="doc['opening_hours']['sunday'] !== 'closed'">
-                <span>So</span>
-                <span>Uhrzeit</span>
-            </div>
-            
         </div>
     </div>
     <div *ngIf="!checkForArray">
