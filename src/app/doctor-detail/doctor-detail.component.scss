@@ -158,3 +158,43 @@
         }
     }
 }
+
+.opening {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    h3 {
+        display: flex;
+        align-items: center;
+        mat-icon {
+            padding-right: 0.75rem;
+            color: #3f51b5;
+        }
+        span {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+    }
+    .list {
+        padding-left: 2.25rem;
+        div {
+            padding: 0.75rem 1.5rem;
+            background-color: rgba(241, 241, 241, 0.811);
+            margin-bottom: 0.75rem;
+            display: flex;
+            max-width: 15rem;
+            span {
+                font-size: 1.1rem;
+                &:first-child {
+                    display: block;
+                    width: 2.5rem;
+                    opacity: 0.5;
+                }
+                &:last-child {
+                    width: calc(100% - 2.5rem);
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

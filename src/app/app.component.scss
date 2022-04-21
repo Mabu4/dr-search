@@ -50,6 +50,9 @@
             &:first-child {
                 margin-left: 0;
             }
+            mat-input {
+                width: 100%;
+            }
             mat-label {
                 font-size: 1rem;
             }
@@ -57,9 +60,41 @@
         button {
             margin-left: 0.5rem;
             height: 3.25rem;
+            @media(max-width: 60em) {
+                flex-shrink: 0;
+            }
            
         }
+        @media(max-width: 55em) {
+            flex-wrap: wrap;
+            mat-form-field {
+                margin: 0;
+                width: calc(50% - 0.25rem);
+                &:first-child {
+                    margin-right: 0.5rem;
+                }
+                &:last-child {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+        @media(max-width: 32.5em){
+            mat-form-field {
+                margin: 0;
+                width: 100%;
+                &:first-child {
+                    margin-right: 0rem;
+                }
+            }
+            button {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
         
+    }
+    @media(max-width: 32.5em){
+        padding-bottom: 2rem;
     }
     
 }

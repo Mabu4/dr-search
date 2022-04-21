@@ -15,7 +15,7 @@ export class DoctorDetailComponent implements OnInit {
   docId: number;
   allDocs = [];
   allInfos = this.startpage.allInfos;
-  doc = [];
+  doc: any = [];
   infos: any = [];
   checkForArray = true;
 

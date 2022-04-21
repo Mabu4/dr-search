@@ -49,11 +49,11 @@
                     <mat-list role="list">
                         <div class="list-header" mat-subheader>Öffnungszeiten</div>
     
-                        <mat-list-item class="opening-list" role="listitem">Montag: {{doc.opening_hours.monday}}</mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Dienstag: {{doc.opening_hours.tuesday}}</mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Mittwoch: {{doc.opening_hours.wednesday}}</mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Donnerstag: {{doc.opening_hours.thursday}}</mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Freitag: {{doc.opening_hours.friday}}</mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Montag: <span>{{doc.opening_hours.monday}}</span></mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Dienstag: <span>{{doc.opening_hours.tuesday}}</span></mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Mittwoch: <span>{{doc.opening_hours.wednesday}}</span></mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Donnerstag: <span>{{doc.opening_hours.thursday}}</span></mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">Freitag: <span>{{doc.opening_hours.friday}}</span></mat-list-item>
                         <mat-list-item class="opening-list" role="listitem" 
                         *ngIf="doc.opening_hours.saturday !== 'closed'">Samstag: {{doc.opening_hours.saturday}}</mat-list-item>
                         <mat-list-item class="opening-list" role="listitem" 

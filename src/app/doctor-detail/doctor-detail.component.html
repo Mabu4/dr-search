@@ -7,7 +7,7 @@
             Liste
         </span>
     </div>
-    <div class="header">
+    <div class="header" *ngIf="checkForArray">
         <div class="top-section">
             <img src="../../assets/img/header.jpg">
         </div>
@@ -41,7 +41,7 @@
         </div>
         
     </div>
-    <div class="informations">
+    <div class="informations" *ngIf="checkForArray">
         <div class="left-box">
             <div class="call">
                 <mat-icon>call</mat-icon>
@@ -66,5 +66,46 @@
                 <span>Bewerten</span>
             </button>
         </div>
+    </div>
+    <div class="opening">
+        <h3>
+            <mat-icon>schedule</mat-icon>
+            <span>Sprechzeiten</span>
+        </h3>
+        <div class="list">
+            <div>
+                <span>Mo</span>
+                <span>{{doc['opening_hours']['monday']}}</span>
+            </div>
+            <div>
+                <span>Di</span>
+                <span>{{doc['opening_hours']['tuesday']}}</span>
+            </div>
+            <div>
+                <span>Mi</span>
+                <span>{{doc['opening_hours']['wednesday']}}</span>
+            </div>
+            <div>
+                <span>Do</span>
+                <span>{{doc['opening_hours']['thursday']}}</span>
+            </div>
+            <div>
+                <span>Fr</span>
+                <span>{{doc['opening_hours']['friday']}}</span>
+            </div>
+            <div *ngIf="doc['opening_hours']['saturday'] !== 'closed'">
+                <span>Sa</span>
+                <span>Uhrzeit</span>
+            </div>
+            <div *ngIf="doc['opening_hours']['sunday'] !== 'closed'">
+                <span>So</span>
+                <span>Uhrzeit</span>
+            </div>
+            
+        </div>
+    </div>
+    <div *ngIf="!checkForArray">
+        <h1>Die Seite konnte nicht geladen werden <br>
+        Versuchen Sie es später nochmal</h1>
     </div>
 </div>
