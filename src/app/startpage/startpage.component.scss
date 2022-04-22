@@ -150,6 +150,11 @@
         }
         
     }
+    .add-button{
+        position: fixed;
+        right: 2rem;
+        bottom: 2rem;
+    }
     @media(max-width: 37.5em){
         .card {
         border-bottom: 1px solid rgba(128, 128, 128, 0.373);
@@ -166,7 +171,7 @@
                 }
             }
             .left-section {
-                width: 100%;
+                width: calc(100% - 10.15rem);
                 flex-grow: 1;
                 h3 {
                     font-size: 1.25rem;        
@@ -208,9 +213,6 @@
                             margin-right: 0.75rem;
                         }
                     }
-                }
-                @media(max-width: 87.5em){
-                    width: calc(100% - 10.15rem);
                 }
             }
         }

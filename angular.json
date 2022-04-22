@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "doctor-database:build:production",
+            "firebaseProject": "doctor-database-5b697",
+            "firebaseHostingSite": "doctor-database-5b697"
+          }
         }
       }
     }

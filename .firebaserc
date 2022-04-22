@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "doctor-database-5b697": {
+      "hosting": {
+        "doctor-database": [
+          "doctor-database-5b697"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "doctor-database-5b697"
+  }
+}

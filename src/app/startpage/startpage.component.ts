@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDoctorComponent } from '../add-doctor/add-doctor.component';
 
 @Component({
   selector: 'app-startpage',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadDocs();
@@ -67,9 +69,8 @@ export class StartpageComponent implements OnInit {
       this.checkForArray = Array.isArray(this.allDocs);
   }
 
+  openDialog(): void{
+  const dialogRef = this.dialog.open(AddDoctorComponent);
+  }
 
-
-
-  
-  
 }

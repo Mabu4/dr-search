@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Arzt hinzufügen</h1>
+<div mat-dialog-content class="dialog-container">
+  <mat-form-field class="field-1" appearance="fill">
+    <mat-label>Titel</mat-label>
+    <input matInput [(ngModel)]="doctor.title">
+  </mat-form-field>
+  <mat-form-field class="field-2" appearance="fill">
+    <mat-label>Vorname</mat-label>
+    <input matInput [(ngModel)]="doctor.firstName">
+  </mat-form-field>
+  <mat-form-field class="field-3" appearance="fill">
+    <mat-label>Nachname</mat-label>
+    <input matInput [(ngModel)]="doctor.lastName">
+  </mat-form-field>
+  <mat-form-field class="field-4" appearance="fill">
+    <mat-label>Telefon</mat-label>
+    <input matInput [(ngModel)]="doctor.phone">
+  </mat-form-field>
+  <mat-form-field class="field-5" appearance="fill">
+    <mat-label>Spezialisierung</mat-label>
+    <input matInput [(ngModel)]="doctor.specialities">
+  </mat-form-field>
+  <mat-form-field class="field-6" appearance="fill">
+    <mat-label>Themen</mat-label>
+    <input matInput [(ngModel)]="doctor.themes">
+  </mat-form-field>
+  <mat-form-field class="field-7" appearance="fill">
+    <mat-label>Bewertungen</mat-label>
+    <input matInput [(ngModel)]="doctor.ratings">
+  </mat-form-field>
+  <mat-form-field class="field-8" appearance="fill">
+    <mat-label>Note</mat-label>
+    <input matInput [(ngModel)]="doctor.note">
+  </mat-form-field>
+  <mat-form-field class="field-9" appearance="fill">
+    <mat-label>Krankenkasse</mat-label>
+    <input matInput [(ngModel)]="doctor.insurance">
+  </mat-form-field>
+  <mat-form-field class="field-10" appearance="fill">
+    <mat-label>Strasse</mat-label>
+    <input matInput [(ngModel)]="doctor.street">
+  </mat-form-field>
+  <mat-form-field class="field-11" appearance="fill">
+    <mat-label>Postleitzahl</mat-label>
+    <input matInput [(ngModel)]="doctor.zipCode">
+  </mat-form-field>
+  <mat-form-field class="field-12" appearance="fill">
+    <mat-label>Ort</mat-label>
+    <input matInput [(ngModel)]="doctor.city">
+  </mat-form-field>
+    
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>

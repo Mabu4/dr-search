@@ -30,7 +30,7 @@ export class DoctorDetailComponent implements OnInit {
 
 
   async loadDocs(){
-    let response = await fetch('http://maximilian-budziat.developerakademie.net/doctor-database/get_doctors.php');
+    let response = await fetch('../../assets/doctor-database/get_doctors.php');
     this.allDocs = await response.json();
     this.checkForArray = Array.isArray(this.allDocs);
     this.getDoc();

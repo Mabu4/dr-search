@@ -1,0 +1,8 @@
+.dialog-container {
+    mat-form-field {
+        width: calc(50% - 0.25rem);
+    }
+    .field-1, .field-3, .field-5, .field-7, .field-9, .field-11 {
+        margin-right: 0.5rem;
+    }
+}

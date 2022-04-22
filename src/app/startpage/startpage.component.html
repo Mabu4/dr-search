@@ -62,11 +62,9 @@
                 </div>
             </mat-card>
         </div>
-        <div *ngIf="!checkForArray">
-            <h1>Die Seite konnte nicht geladen werden. <br>
-            Bitte versuchen Sie es später nochmal</h1>
-
-        </div>
+        <button (click)="openDialog()" class="add-button" mat-fab color="primary">
+            <mat-icon>add</mat-icon>
+        </button>
 
     </div>
     <div *ngIf="!checkForArray">
