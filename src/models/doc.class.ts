@@ -3,8 +3,8 @@ export class Doc {
     firstName: string;
     lastName: string;
     title: string;
-    specialities: string;
-    themes: string;
+    specialities: any;
+    themes: any;
     insurance: string;
     note: number;
     ratings: number;
@@ -12,6 +12,7 @@ export class Doc {
     zipCode: number;
     city: string;
     phone: number;
+    img: string;
     
 
     constructor(obj?: any){
@@ -28,7 +29,7 @@ export class Doc {
         this.zipCode = obj ? obj.zipCode: '';
         this.city = obj ? obj.city: '';
         this.phone = obj ? obj.phone: '';
-        
+        this.img = obj ? obj.img: '';
     }
 
     public toJSON(){
@@ -44,7 +45,8 @@ export class Doc {
             street: this.street,
             zipCode: this.zipCode,
             city: this.city,
-            phone: this.phone
+            phone: this.phone,
+            img: this.img
         }
     }
 }

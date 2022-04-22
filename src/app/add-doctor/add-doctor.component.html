@@ -1,4 +1,20 @@
-<h1 mat-dialog-title>Arzt hinzufügen</h1>
+<div class="headline" mat-dialog-title>
+  <h1>Arzt hinzufügen</h1>
+  <div>
+    <button mat-button [matMenuTriggerFor]="spec">Spezialisierung</button>
+      <mat-menu #spec="matMenu">
+        <button class="items" mat-menu-item *ngFor="let spec of specialities; let i = index">
+          <span>{{spec}}</span>
+        </button>
+      </mat-menu>
+    <button mat-button [matMenuTriggerFor]="theme">Themen</button>
+      <mat-menu #theme="matMenu">
+        <button class="items" mat-menu-item *ngFor="let theme of themes; let i = index">
+          <span>{{theme}}</span>
+        </button>
+      </mat-menu>
+  </div>
+</div>
 <div mat-dialog-content class="dialog-container">
   <mat-form-field class="field-1" appearance="fill">
     <mat-label>Titel</mat-label>
@@ -17,12 +33,18 @@
     <input matInput [(ngModel)]="doctor.phone">
   </mat-form-field>
   <mat-form-field class="field-5" appearance="fill">
-    <mat-label>Spezialisierung</mat-label>
+    <mat-label>Spezialisierung</mat-label> 
     <input matInput [(ngModel)]="doctor.specialities">
+    <button (click)="addToSpecialities()" mat-mini-fab color="primary" class="add-detail">
+      <mat-icon>add</mat-icon>
+    </button>
   </mat-form-field>
   <mat-form-field class="field-6" appearance="fill">
     <mat-label>Themen</mat-label>
     <input matInput [(ngModel)]="doctor.themes">
+    <button (click)="addToThemes()" mat-mini-fab color="primary" class="add-detail">
+      <mat-icon>add</mat-icon>
+    </button>
   </mat-form-field>
   <mat-form-field class="field-7" appearance="fill">
     <mat-label>Bewertungen</mat-label>
@@ -34,7 +56,11 @@
   </mat-form-field>
   <mat-form-field class="field-9" appearance="fill">
     <mat-label>Krankenkasse</mat-label>
-    <input matInput [(ngModel)]="doctor.insurance">
+    <mat-select [(ngModel)]="doctor.insurance">
+      <mat-option [value]="'privat'">Privat</mat-option>
+      <mat-option [value]="'gesetzlich'">Gesetzlich</mat-option>
+      <mat-option [value]="'beides'">Beides</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field class="field-10" appearance="fill">
     <mat-label>Strasse</mat-label>
@@ -48,10 +74,13 @@
     <mat-label>Ort</mat-label>
     <input matInput [(ngModel)]="doctor.city">
   </mat-form-field>
+  <mat-form-field class="field-13" appearance="fill">
+    <mat-label>Bild</mat-label>
+    <input matInput [(ngModel)]="doctor.img">
+  </mat-form-field>
     
-  
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button cdkFocusInitial (click)="saveDoc()">Ok</button>
 </div>

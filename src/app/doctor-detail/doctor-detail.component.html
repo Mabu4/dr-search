@@ -8,7 +8,7 @@
                 Liste
             </span>
         </div>
-        <div class="header" *ngIf="checkForArray">
+        <div class="header">
             <div class="top-section">
                 <img src="../../assets/img/header.jpg">
             </div>
@@ -32,17 +32,17 @@
                 <div class="right-section">
                     <div class="note">
                         <b>Note</b>
-                        <span>{{infos['note']}}</span>
+                        <span>1,2</span>
                     </div>
                     <div class="ratings">
                         <mat-icon>chat</mat-icon>
-                        <span>{{infos['rating']}} Bewertungen</span>
+                        <span>3 Bewertungen</span>
                     </div>
                 </div>
             </div>
             
         </div>
-        <div class="informations" *ngIf="checkForArray">
+        <div class="informations">
             <div class="left-box">
                 <div class="call">
                     <mat-icon>call</mat-icon>
@@ -104,9 +104,5 @@
                 
             </div>
         </div>
-    </div>
-    <div *ngIf="!checkForArray">
-        <h1>Die Seite konnte nicht geladen werden <br>
-        Versuchen Sie es später nochmal</h1>
     </div>
 </div>

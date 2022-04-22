@@ -1,8 +1,28 @@
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+}
+
 .dialog-container {
     mat-form-field {
-        width: calc(50% - 0.25rem);
+        width: calc(50% - 0.325rem);
+        position: relative;
+        button {
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            bottom: 0.4rem;
+            opacity: 0.8;
+            &:hover {
+                opacity: 1;
+            }
+            mat-icon {
+                margin-bottom: 0.2rem;
+            }
+        }
     }
     .field-1, .field-3, .field-5, .field-7, .field-9, .field-11 {
-        margin-right: 0.5rem;
+        margin-right: 0.65rem;
     }
 }

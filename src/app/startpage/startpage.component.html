@@ -1,15 +1,15 @@
 <div class="primary-container">
-    <div *ngIf="checkForArray" class="start-page">
+    <div class="start-page">
         <div>
             <h2>Alle Ärzte</h2>
-            <mat-card class="card" *ngFor="let doc of allDocs; let i = index">
+            <mat-card class="card" *ngFor="let doc of docs; let i = index">
                 <div class="picture">
-                    <img src="../../assets/{{ doc.img }}">
-                    <p>{{allInfos[i].type}}</p>
+                    <img src="../../assets/img/{{ doc.img }}">
+                    <p>{{doc.insurance}}</p>
                 </div>
                 <div class="left-section">
-                    <h3 [routerLink]="['/doctor-detail/' + doc.id]">{{doc.title}} {{doc.first_name}} {{doc.last_name}}</h3>
-                    <p class="type">{{doc.specialities[0]}}<span *ngIf="doc.specialities[1]">, {{doc.specialities[1]}}</span></p>
+                    <h3 [routerLink]="['/doctor-detail/' + i]">{{doc.title}} {{doc.firstName}} {{doc.lastName}}</h3>
+                    <p class="type"><span *ngFor="let spec of doc.specialities; let i = index">{{spec}}<span *ngIf="doc.specialities.length > 0 && i + 1 < doc.specialities.length">, </span></span></p>
                     <p class="address">
                         {{doc.street}} <br>
                         <span *ngIf="doc.zipcode > 1">{{doc.zipcode}}</span> {{doc.city}}
@@ -21,34 +21,30 @@
                         </div>
                         <div class="note">
                             <span>Note</span> 
-                            <div>{{allInfos[i].note}}</div>
+                            <div>{{doc.note}}</div>
                         </div>
                         <div class="ratings">
-                            {{allInfos[i].rating}} Bewertungen
+                            {{doc.ratings}} Bewertungen
                         </div>
                     </div>
                     <div class="themes">
                         <div class="box">
-                            <div>
-                                {{allInfos[i].first}}
+                            <div class="inner" *ngFor="let theme of doc.themes">
+                                <div >
+                                    {{theme}}
+                                </div>
+                                <span>
+                                    &#124;
+                                </span>
                             </div>
-                            <span>&#124;</span>
-                            <div>
-                                {{allInfos[i].second}}
-                            </div>
-                            <span>&#124;</span>
-                            <div>
-                                {{allInfos[i].third}}
-                            </div>
-                            <span>&#124;</span>
+                            
                         </div>
                         <mat-icon>more_horiz</mat-icon>
                     </div>
                 </div>
                 <div class="right-section">
                     <mat-list role="list">
-                        <div class="list-header" mat-subheader>Öffnungszeiten</div>
-    
+                        <!-- <div class="list-header" mat-subheader>Öffnungszeiten</div>
                         <mat-list-item class="opening-list" role="listitem">Montag: <span>{{doc.opening_hours.monday}}</span></mat-list-item>
                         <mat-list-item class="opening-list" role="listitem">Dienstag: <span>{{doc.opening_hours.tuesday}}</span></mat-list-item>
                         <mat-list-item class="opening-list" role="listitem">Mittwoch: <span>{{doc.opening_hours.wednesday}}</span></mat-list-item>
@@ -57,7 +53,7 @@
                         <mat-list-item class="opening-list" role="listitem" 
                         *ngIf="doc.opening_hours.saturday !== 'closed'">Samstag: {{doc.opening_hours.saturday}}</mat-list-item>
                         <mat-list-item class="opening-list" role="listitem" 
-                        *ngIf="doc.opening_hours.sunday !== 'closed'">Sonntag: {{doc.opening_hours.sunday}}</mat-list-item>
+                        *ngIf="doc.opening_hours.sunday !== 'closed'">Sonntag: {{doc.opening_hours.sunday}}</mat-list-item> -->
                     </mat-list>
                 </div>
             </mat-card>
@@ -65,14 +61,6 @@
         <button (click)="openDialog()" class="add-button" mat-fab color="primary">
             <mat-icon>add</mat-icon>
         </button>
-
     </div>
-    <div *ngIf="!checkForArray">
-        <h1>
-            Die Seite konnte nicht geladen werden <br>
-            Bitte versuchen sie es später nochmal
-        </h1>
-    </div>
-    
 </div>
 
