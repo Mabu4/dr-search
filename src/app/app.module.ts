@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     AngularFirestoreModule,
     FormsModule,
+    MatChipsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),

@@ -15,6 +15,7 @@ export class DoctorDetailComponent implements OnInit {
   doc: any = [];
   isLoaded = false;
 
+  
   ngOnInit(): void {
       this.route.paramMap.subscribe(paraMap => {
         let idInString = paraMap.get('id');

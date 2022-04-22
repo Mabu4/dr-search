@@ -13,6 +13,16 @@ export class Doc {
     city: string;
     phone: number;
     img: string;
+    mondayFrom: any;
+    mondayTo: any;
+    tuesdayFrom: any;
+    tuesdayTo: any;
+    wednesdayFrom: any;
+    wednesdayTo: any;
+    thursdayFrom: any;
+    thursdayTo: any;
+    fridayFrom: any;
+    fridayTo: any;
     
 
     constructor(obj?: any){
@@ -30,6 +40,16 @@ export class Doc {
         this.city = obj ? obj.city: '';
         this.phone = obj ? obj.phone: '';
         this.img = obj ? obj.img: '';
+        this.mondayFrom = obj ? obj.mondayFrom: '';
+        this.mondayTo = obj ? obj.mondayTo: '';
+        this.tuesdayFrom = obj ? obj.tuesdayFrom: '';
+        this.tuesdayTo = obj ? obj.tuesdayTo: '';
+        this.wednesdayFrom = obj ? obj.wednesdayFrom: '';
+        this.wednesdayTo = obj ? obj.wednesdayTo: '';
+        this.thursdayFrom = obj ? obj.thursdayFrom: '';
+        this.thursdayTo = obj ? obj.thursdayTo: '';
+        this.fridayFrom = obj ? obj.fridayFrom: '';
+        this.fridayTo = obj ? obj.fridayTo: '';
     }
 
     public toJSON(){
@@ -46,7 +66,17 @@ export class Doc {
             zipCode: this.zipCode,
             city: this.city,
             phone: this.phone,
-            img: this.img
+            img: this.img,
+            mondayFrom: this.mondayFrom,
+            mondayTo: this.mondayTo,
+            tuesdayFrom: this.tuesdayFrom,
+            tuesdayTo: this.tuesdayTo,
+            wednesdayFrom: this.wednesdayFrom,
+            wednesdayTo: this.wednesdayTo,
+            thursdayFrom: this.thursdayFrom,
+            thursdayTo: this.thursdayTo,
+            fridayFrom: this.fridayFrom,
+            fridayTo: this.fridayTo
         }
     }
 }

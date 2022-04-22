@@ -34,6 +34,9 @@
         button {
             padding: 0 2rem;
         }
+        @media(min-width: 55em){
+            display: none !important;
+        }
         
     }
     .desktop-list {

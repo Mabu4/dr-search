@@ -33,11 +33,20 @@
     <input matInput [(ngModel)]="doctor.phone">
   </mat-form-field>
   <mat-form-field class="field-5" appearance="fill">
-    <mat-label>Spezialisierung</mat-label> 
-    <input matInput [(ngModel)]="doctor.specialities">
-    <button (click)="addToSpecialities()" mat-mini-fab color="primary" class="add-detail">
-      <mat-icon>add</mat-icon>
-    </button>
+    <mat-label>Spezialisierung</mat-label>
+    <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-chip *ngFor="let spec of specialities" (removed)="remove(spec)">
+        {{spec}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input placeholder="Neue Spezia..."
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
   </mat-form-field>
   <mat-form-field class="field-6" appearance="fill">
     <mat-label>Themen</mat-label>
@@ -78,7 +87,54 @@
     <mat-label>Bild</mat-label>
     <input matInput [(ngModel)]="doctor.img">
   </mat-form-field>
-    
+
+  <div class="opnenings">
+    <h3>Montag</h3>
+    <mat-form-field class="openings-1" appearance="fill">
+      <mat-label>Von</mat-label>
+      <input matInput [(ngModel)]="doctor.mondayFrom">
+    </mat-form-field>
+    <mat-form-field class="openings-2" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.mondayTo">
+    </mat-form-field>
+    <h3>Dienstag</h3>
+    <mat-form-field class="openings-3" appearance="fill">
+      <mat-label>Von</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayFrom">
+    </mat-form-field>
+    <mat-form-field class="openings-4" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <h3>Mittwoch</h3>
+    <mat-form-field class="openings-5" appearance="fill">
+      <mat-label>Von</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <mat-form-field class="openings-6" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <h3>Donnerstag</h3>
+    <mat-form-field class="openings-7" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <mat-form-field class="openings-8" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <h3>Freitag</h3>
+    <mat-form-field class="openings-9" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+    <mat-form-field class="openings-10" appearance="fill">
+      <mat-label>Bis</mat-label>
+      <input matInput [(ngModel)]="doctor.tuesdayTo">
+    </mat-form-field>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>

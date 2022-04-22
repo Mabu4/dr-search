@@ -25,4 +25,20 @@
     .field-1, .field-3, .field-5, .field-7, .field-9, .field-11 {
         margin-right: 0.65rem;
     }
+    .field-5 {
+        mat-chip {
+            padding-right: 22px;
+            button {
+                right: 2px;
+            }
+        }
+    }
+}
+
+
+.opnenings {
+    .openings-1, .openings-3, .openings-5, .openings-7, .openings-9 {
+        margin-right: 0.65rem;
+    }
+    
 }

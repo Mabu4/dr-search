@@ -15,28 +15,23 @@
             <div class="bottom-section">
                 <div class="left-section">
                     <div class="img-outer">
-                        <img src="../../assets/{{doc['img']}}">
+                        <img src="../../assets/img/{{doc.img}}">
                     </div>
                     <div class="name-description">
-                        <h3>{{doc['title']}} {{doc['first_name']}} {{doc['last_name']}}</h3>
+                        <h3>{{doc.title}} {{doc.firstName}} {{doc.lastName}}</h3>
                         <p>
-                            <span *ngFor="let speciality of doc['specialities']; let i = index">
-                                <span *ngIf="i == 1">
-                                    , 
-                                </span>
-                                {{speciality}}
-                            </span>
+                            <span *ngFor="let speciality of doc.specialities; let i = index">{{speciality}}<span *ngIf="doc.specialities.length > 0 && i + 1 < doc.specialities.length">, </span></span>
                         </p>
                     </div>
                 </div>
                 <div class="right-section">
                     <div class="note">
                         <b>Note</b>
-                        <span>1,2</span>
+                        <span>{{doc.note}}</span>
                     </div>
                     <div class="ratings">
                         <mat-icon>chat</mat-icon>
-                        <span>3 Bewertungen</span>
+                        <span>{{doc.ratings}} Bewertungen</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +41,7 @@
             <div class="left-box">
                 <div class="call">
                     <mat-icon>call</mat-icon>
-                    <span>02415 / 124598</span>
+                    <span>{{doc.phone}}</span>
                 </div>
                 <div class="home">
                     <mat-icon>home</mat-icon>
@@ -55,8 +50,7 @@
                 <div class="insurance">
                     <mat-icon>payments</mat-icon>
                     <div>
-                        <span>Gesetzlich Versicherte</span>
-                        <span>Privatversicherte</span>
+                        <span>{{doc.insurance}}</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +67,7 @@
                 <span>Sprechzeiten</span>
             </h3>
             <div class="list">
-                <div>
+                <!-- <div>
                     <span>Mo</span>
                     <span>{{doc['opening_hours']['monday']}}</span>
                 </div>
@@ -100,7 +94,7 @@
                 <div *ngIf="doc['opening_hours']['sunday'] !== 'closed'">
                     <span>So</span>
                     <span>Uhrzeit</span>
-                </div>
+                </div> -->
                 
             </div>
         </div>

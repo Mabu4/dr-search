@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Doc } from 'src/models/doc.class';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
 
 @Component({
   selector: 'app-add-doctor',
@@ -10,8 +12,10 @@ import { Doc } from 'src/models/doc.class';
 })
 export class AddDoctorComponent implements OnInit {
 
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
   doctor = new Doc();
-  specialities = [];
+  specialities = ['Allgemeinarzt'];
   themes = [];
 
   constructor(public dialogRef: MatDialogRef<AddDoctorComponent>, private firestore: AngularFirestore) { }
@@ -37,14 +41,29 @@ export class AddDoctorComponent implements OnInit {
   
   }
 
-  addToSpecialities() {
-    this.specialities.push(this.doctor.specialities);
-    this.doctor.specialities = '';
-  }
-
   addToThemes() {
     this.themes.push(this.doctor.themes);
     this.doctor.themes = '';
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.specialities.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(spec): void {
+    const index = this.specialities.indexOf(spec);
+
+    if (index >= 0) {
+      this.specialities.splice(index, 1);
+    }
   }
 
 }
