@@ -6,6 +6,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .primary-container {
     padding-left: 15rem;
     padding-right: 15rem;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
     @media(max-width: 80em){
         padding-left: 10rem;
         padding-right: 10rem;

@@ -176,25 +176,27 @@
         }
     }
     .list {
-        padding-left: 2.25rem;
-        div {
+        .inner {
             padding: 0.75rem 1.5rem;
             background-color: rgba(241, 241, 241, 0.811);
             margin-bottom: 0.75rem;
             display: flex;
-            max-width: 15rem;
-            span {
-                font-size: 1.1rem;
-                &:first-child {
-                    display: block;
-                    width: 2.5rem;
-                    opacity: 0.5;
-                }
-                &:last-child {
-                    width: calc(100% - 2.5rem);
-                    text-align: right;
-                }
+            align-items: center;
+            min-width: 15rem;
+            max-width: 17.5rem;
+            div {
+                display: flex;
+                justify-content: space-between;
+                flex-grow: 1;
             }
+            span {
+                font-size: 1.1rem; 
+            }
+            .day {
+                display: block;
+                width: 5rem;
+                opacity: 0.5;
+            }    
         }
     }
 }

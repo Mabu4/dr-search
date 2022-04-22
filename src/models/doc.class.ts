@@ -23,6 +23,7 @@ export class Doc {
     thursdayTo: any;
     fridayFrom: any;
     fridayTo: any;
+    appointment: any;
     
 
     constructor(obj?: any){
@@ -50,6 +51,7 @@ export class Doc {
         this.thursdayTo = obj ? obj.thursdayTo: '';
         this.fridayFrom = obj ? obj.fridayFrom: '';
         this.fridayTo = obj ? obj.fridayTo: '';
+        this.appointment = obj ? obj.appointment: '';
     }
 
     public toJSON(){
@@ -76,7 +78,8 @@ export class Doc {
             thursdayFrom: this.thursdayFrom,
             thursdayTo: this.thursdayTo,
             fridayFrom: this.fridayFrom,
-            fridayTo: this.fridayTo
+            fridayTo: this.fridayTo,
+            appointment: this.appointment
         }
     }
 }

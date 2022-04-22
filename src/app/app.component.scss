@@ -10,6 +10,7 @@
     }
     img {
         height: 3.5rem;
+        cursor: pointer;
         @media(max-width: 55em){
             height: 3rem
         }

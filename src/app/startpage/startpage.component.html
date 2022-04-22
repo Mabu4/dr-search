@@ -12,7 +12,7 @@
                     <p class="type"><span *ngFor="let spec of doc.specialities; let i = index">{{spec}}<span *ngIf="doc.specialities.length > 0 && i + 1 < doc.specialities.length">, </span></span></p>
                     <p class="address">
                         {{doc.street}} <br>
-                        <span *ngIf="doc.zipcode > 1">{{doc.zipcode}}</span> {{doc.city}}
+                        <span>{{doc.zipCode}}</span> {{doc.city}}
                     </p>
                     <div class="description">
                         <div class="profile">
@@ -44,16 +44,47 @@
                 </div>
                 <div class="right-section">
                     <mat-list role="list">
-                        <!-- <div class="list-header" mat-subheader>Öffnungszeiten</div>
-                        <mat-list-item class="opening-list" role="listitem">Montag: <span>{{doc.opening_hours.monday}}</span></mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Dienstag: <span>{{doc.opening_hours.tuesday}}</span></mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Mittwoch: <span>{{doc.opening_hours.wednesday}}</span></mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Donnerstag: <span>{{doc.opening_hours.thursday}}</span></mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem">Freitag: <span>{{doc.opening_hours.friday}}</span></mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem" 
-                        *ngIf="doc.opening_hours.saturday !== 'closed'">Samstag: {{doc.opening_hours.saturday}}</mat-list-item>
-                        <mat-list-item class="opening-list" role="listitem" 
-                        *ngIf="doc.opening_hours.sunday !== 'closed'">Sonntag: {{doc.opening_hours.sunday}}</mat-list-item> -->
+                        <div class="list-header" mat-subheader>Öffnungszeiten</div>
+                        <mat-list-item class="opening-list" role="listitem">
+                            <span class="day">Montag:</span>
+                            <div>
+                                <span>{{doc.mondayFrom}}</span>
+                                <span class="minus">-</span>
+                                <span>{{doc.mondayTo}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">
+                            <span class="day">Dienstag:</span>
+                            <div>
+                                <span>{{doc.tuesdayFrom}}</span>
+                                <span class="minus">-</span>
+                                <span>{{doc.tuesdayTo}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">
+                            <span class="day">Mittwoch:</span>
+                            <div>
+                                <span>{{doc.wednesdayFrom}}</span>
+                                <span class="minus">-</span>
+                                <span>{{doc.wednesdayTo}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">
+                            <span class="day">Donnerstag:</span>
+                            <div>
+                                <span>{{doc.thursdayFrom}}</span>
+                                <span class="minus">-</span>
+                                <span>{{doc.thursdayTo}}</span>
+                            </div>
+                        </mat-list-item>
+                        <mat-list-item class="opening-list" role="listitem">
+                            <span class="day">Freitag:</span>
+                            <div>
+                                <span>{{doc.fridayFrom}}</span>
+                                <span class="minus">-</span>
+                                <span>{{doc.fridayTo}}</span>
+                            </div>
+                        </mat-list-item>
                     </mat-list>
                 </div>
             </mat-card>

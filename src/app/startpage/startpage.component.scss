@@ -136,17 +136,33 @@
         }
         .right-section {
             padding-left: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
             .list-header {
                 color: rgba($color: #000000, $alpha: 0.45);
                 font-size: 1.1rem;
             }
             .opening-list {
                 white-space: nowrap;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 margin: -1rem 0rem;
                 span {
-                    width: 100%;
-                    padding-left: 2rem;
-                    text-align: right;
+                    display: block;                   
+                    
+                }
+                .day {
+                    width: 7rem;
+                }
+                .minus {
+                    padding: 0 1rem;
+                }
+                div {
+                    
+                    display: flex;
+                    justify-content: center;
                 }
             }
             @media(max-width: 87.5em){

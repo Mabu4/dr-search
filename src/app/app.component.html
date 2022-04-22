@@ -2,7 +2,7 @@
 
 <mat-toolbar color="primary" class="header">
   <div class="primary-container header-container"> 
-    <img src="../assets/img/logo.png">
+    <img [routerLink]="['/']" src="../assets/img/logo.png">
     <button class="menu" [matMenuTriggerFor]="menu" mat-button><mat-icon aria-hidden="false">menu</mat-icon></button>
     <ul class="desktop-list">
       <li>Arztsuche</li>

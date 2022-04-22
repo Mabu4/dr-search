@@ -15,7 +15,7 @@
             <div class="bottom-section">
                 <div class="left-section">
                     <div class="img-outer">
-                        <img src="../../assets/img/{{doc.img}}">
+                        <img *ngIf="isLoaded" src="../../assets/img/{{doc.img}}">
                     </div>
                     <div class="name-description">
                         <h3>{{doc.title}} {{doc.firstName}} {{doc.lastName}}</h3>
@@ -67,34 +67,48 @@
                 <span>Sprechzeiten</span>
             </h3>
             <div class="list">
-                <!-- <div>
-                    <span>Mo</span>
-                    <span>{{doc['opening_hours']['monday']}}</span>
+                <div class="inner">
+                    <span class="day">Mo</span>
+                    <div>
+                        <span>{{doc.mondayFrom}}</span>
+                        <span>-</span>
+                        <span>{{doc.mondayTo}}</span>
+                    </div>
                 </div>
-                <div>
-                    <span>Di</span>
-                    <span>{{doc['opening_hours']['tuesday']}}</span>
+                <div class="inner">
+                    <span class="day">Di</span>
+                    <div>
+                        <span>{{doc.tuesdayFrom}}</span>
+                        <span>-</span>
+                        <span>{{doc.tuesdayTo}}</span>
+                    </div>
                 </div>
-                <div>
-                    <span>Mi</span>
-                    <span>{{doc['opening_hours']['wednesday']}}</span>
+                <div class="inner">
+                    <span class="day">Mi</span>
+                    <div>
+                        <span>{{doc.wednesdayFrom}}</span>
+                        <span>-</span>
+                        <span>{{doc.wedenesdayTo}}</span>
+                    </div>
+                    
                 </div>
-                <div>
-                    <span>Do</span>
-                    <span>{{doc['opening_hours']['thursday']}}</span>
+                <div class="inner">
+                    <span class="day">Do</span>
+                    <div>
+                        <span>{{doc.thursdayFrom}}</span>
+                        <span>-</span>
+                        <span>{{doc.thursdayTo}}</span>
+                    </div>
+                    
                 </div>
-                <div>
-                    <span>Fr</span>
-                    <span>{{doc['opening_hours']['friday']}}</span>
+                <div class="inner">
+                    <span class="day">Fr</span>
+                    <div>
+                        <span>{{doc.fridayFrom}}</span>
+                        <span>-</span>
+                        <span>{{doc.fridayTo}}</span>
+                    </div>
                 </div>
-                <div *ngIf="doc['opening_hours']['saturday'] !== 'closed'">
-                    <span>Sa</span>
-                    <span>Uhrzeit</span>
-                </div>
-                <div *ngIf="doc['opening_hours']['sunday'] !== 'closed'">
-                    <span>So</span>
-                    <span>Uhrzeit</span>
-                </div> -->
                 
             </div>
         </div>

@@ -8,31 +8,11 @@
     mat-form-field {
         width: calc(50% - 0.325rem);
         position: relative;
-        button {
-            position: absolute;
-            right: 0;
-            z-index: 1;
-            bottom: 0.4rem;
-            opacity: 0.8;
-            &:hover {
-                opacity: 1;
-            }
-            mat-icon {
-                margin-bottom: 0.2rem;
-            }
-        }
     }
-    .field-1, .field-3, .field-5, .field-7, .field-9, .field-11 {
+    .field-1, .field-3, .field-5, .field-7, .field-9, .field-11, .field-13 {
         margin-right: 0.65rem;
     }
-    .field-5 {
-        mat-chip {
-            padding-right: 22px;
-            button {
-                right: 2px;
-            }
-        }
-    }
+    
 }
 
 

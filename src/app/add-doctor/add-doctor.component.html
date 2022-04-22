@@ -1,19 +1,5 @@
 <div class="headline" mat-dialog-title>
   <h1>Arzt hinzufügen</h1>
-  <div>
-    <button mat-button [matMenuTriggerFor]="spec">Spezialisierung</button>
-      <mat-menu #spec="matMenu">
-        <button class="items" mat-menu-item *ngFor="let spec of specialities; let i = index">
-          <span>{{spec}}</span>
-        </button>
-      </mat-menu>
-    <button mat-button [matMenuTriggerFor]="theme">Themen</button>
-      <mat-menu #theme="matMenu">
-        <button class="items" mat-menu-item *ngFor="let theme of themes; let i = index">
-          <span>{{theme}}</span>
-        </button>
-      </mat-menu>
-  </div>
 </div>
 <div mat-dialog-content class="dialog-container">
   <mat-form-field class="field-1" appearance="fill">
@@ -50,10 +36,19 @@
   </mat-form-field>
   <mat-form-field class="field-6" appearance="fill">
     <mat-label>Themen</mat-label>
-    <input matInput [(ngModel)]="doctor.themes">
-    <button (click)="addToThemes()" mat-mini-fab color="primary" class="add-detail">
-      <mat-icon>add</mat-icon>
-    </button>
+    <mat-chip-list #chipList1 aria-label="Fruit selection">
+      <mat-chip *ngFor="let theme of themes" (removed)="removeSecond(theme)">
+        {{theme}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input placeholder="Neues Thema..."
+             [matChipInputFor]="chipList1"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="addSecond($event)">
+    </mat-chip-list>
   </mat-form-field>
   <mat-form-field class="field-7" appearance="fill">
     <mat-label>Bewertungen</mat-label>
@@ -61,14 +56,16 @@
   </mat-form-field>
   <mat-form-field class="field-8" appearance="fill">
     <mat-label>Note</mat-label>
-    <input matInput [(ngModel)]="doctor.note">
+    <mat-select [(ngModel)]="doctor.note">
+      <mat-option *ngFor="let note of notes" [value]="note">{{note}}</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field class="field-9" appearance="fill">
     <mat-label>Krankenkasse</mat-label>
     <mat-select [(ngModel)]="doctor.insurance">
-      <mat-option [value]="'privat'">Privat</mat-option>
-      <mat-option [value]="'gesetzlich'">Gesetzlich</mat-option>
-      <mat-option [value]="'beides'">Beides</mat-option>
+      <mat-option [value]="'Privat'">Privat</mat-option>
+      <mat-option [value]="'Gesetzlich'">Gesetzlich</mat-option>
+      <mat-option [value]="'Privat & Gesetzlich'">Privat & Gesetzlich</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="field-10" appearance="fill">
@@ -84,6 +81,14 @@
     <input matInput [(ngModel)]="doctor.city">
   </mat-form-field>
   <mat-form-field class="field-13" appearance="fill">
+    <mat-label>Terminvergabe</mat-label>
+    <mat-select [(ngModel)]="doctor.appointment">
+      <mat-option [value]="'privat'">Telefonisch</mat-option>
+      <mat-option [value]="'gesetzlich'">Online</mat-option>
+      <mat-option [value]="'beides'">Telefonisch & Online</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="field-14" appearance="fill">
     <mat-label>Bild</mat-label>
     <input matInput [(ngModel)]="doctor.img">
   </mat-form-field>
@@ -92,47 +97,67 @@
     <h3>Montag</h3>
     <mat-form-field class="openings-1" appearance="fill">
       <mat-label>Von</mat-label>
-      <input matInput [(ngModel)]="doctor.mondayFrom">
+      <mat-select [(ngModel)]="doctor.mondayFrom">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="openings-2" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.mondayTo">
+      <mat-select [(ngModel)]="doctor.mondayTo">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <h3>Dienstag</h3>
     <mat-form-field class="openings-3" appearance="fill">
       <mat-label>Von</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayFrom">
+      <mat-select [(ngModel)]="doctor.tuesdayFrom">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="openings-4" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.tuesdayTo">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <h3>Mittwoch</h3>
     <mat-form-field class="openings-5" appearance="fill">
       <mat-label>Von</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.wednesdayFrom">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="openings-6" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.wednesdayTo">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <h3>Donnerstag</h3>
     <mat-form-field class="openings-7" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.thursdayFrom">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="openings-8" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.thursdayTo">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <h3>Freitag</h3>
     <mat-form-field class="openings-9" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.fridayFrom">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field class="openings-10" appearance="fill">
       <mat-label>Bis</mat-label>
-      <input matInput [(ngModel)]="doctor.tuesdayTo">
+      <mat-select [(ngModel)]="doctor.fridayTo">
+        <mat-option *ngFor="let time of times" [value]="time">{{time}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 </div>
