@@ -26,6 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
     FormsModule,
     MatChipsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),

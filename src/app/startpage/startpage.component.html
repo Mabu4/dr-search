@@ -3,18 +3,29 @@
     <div class="primary-container">
         <form class="search-form">
             <mat-form-field appearance="fill">
-              <mat-label>Fachgebiet / Erkrankung</mat-label>
-              <input matInput placeholder="">
+                <mat-label>Fachgebiet / Erkrankung</mat-label>
+                <input type="text" matInput [formControl]="myControl1" [matAutocomplete]="auto1">
+                <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn1">
+                  <mat-option *ngFor="let option of filteredThemes | async" [value]="option">
+                    {{option.themes}}
+                  </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Ort</mat-label>
-                <input matInput placeholder="">
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let option of filteredCitys | async" [value]="option">
+                    {{option.city}}
+                  </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Buchung</mat-label>
                 <mat-select>
-                  <mat-option value="one">telefonisch & online</mat-option>
-                  <mat-option value="two">nur online</mat-option>
+                  <mat-option value="one">Telefonisch</mat-option>
+                  <mat-option value="two">Online</mat-option>
+                  <mat-option value="three">Telefonisch & Online</mat-option>
                 </mat-select>
             </mat-form-field>
             <button mat-raised-button color="primary">
