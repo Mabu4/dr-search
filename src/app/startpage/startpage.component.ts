@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDoctorComponent } from '../add-doctor/add-doctor.component';
-import {FormControl} from '@angular/forms';
+import {FormControl, NgForm} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { Doc } from 'src/models/doc.class';
@@ -17,12 +17,15 @@ export class StartpageComponent implements OnInit {
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
   docs = [];
+  shownDocs = [];
   myControl = new FormControl();
   myControl1 = new FormControl();
   citys = [];
   themes = [];
   filteredCitys: Observable<Doc[]>;
   filteredThemes: Observable<Doc[]>;
+  choosenTheme: string;
+  choosenCity: string;
 
   ngOnInit(): void {
     this.loadDocs();
@@ -46,7 +49,9 @@ export class StartpageComponent implements OnInit {
     .subscribe((changes: any) => {
       // console.log(changes);
       this.docs = changes;
+      this.shownDocs = changes;
       this.filterElements();
+
     })
   }
 
@@ -70,6 +75,7 @@ export class StartpageComponent implements OnInit {
     return doc && doc.city ? doc.city : '';
   }
 
+
   displayFn1(doc: any): any {
     return doc && doc.themes ? doc.themes : '';
   }
@@ -80,6 +86,7 @@ export class StartpageComponent implements OnInit {
     return this.citys.filter(citys => citys.city.toLowerCase().includes(filterValue));
   }
 
+
   private _filter1(name: any) {
     const filterValue = name.toLowerCase();
     return this.themes.filter(themes => themes.themes.toLowerCase().includes(filterValue));
@@ -88,6 +95,17 @@ export class StartpageComponent implements OnInit {
 
   openDialog(): void{
   const dialogRef = this.dialog.open(AddDoctorComponent);
+  }
+
+
+  filterList(searchForm: NgForm) {
+    console.log(searchForm.value);
+    console.log(this.docs);
+    console.log(this.choosenCity);
+    let matchingCitys = this.docs.filter((doc) => doc.city == this.choosenCity);
+    let matchingThemes = this.docs.filter((item) => item.themes == this.choosenTheme);
+    let matchingSpecialities = this.docs.filter((item) => item.specialities == this.choosenTheme);
+    console.log(matchingCitys);
   }
 
 }

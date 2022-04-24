@@ -1,16 +1,17 @@
 
 <div class="search">
     <div class="primary-container">
-        <form class="search-form">
+        <form #searchForm="ngForm" class="search-form" (ngSubmit)="filterList(searchForm)">
             <mat-form-field appearance="fill">
                 <mat-label>Fachgebiet / Erkrankung</mat-label>
-                <input type="text" matInput [formControl]="myControl1" [matAutocomplete]="auto1">
+                <input type="text" matInput [formControl]="myControl1" [matAutocomplete]="auto1" ngModel="choosenTheme">
                 <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn1">
                   <mat-option *ngFor="let option of filteredThemes | async" [value]="option">
                     {{option.themes}}
                   </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
+            <!-- [(ngModel)]="choosenCity" name="city" ngDefaultControl -->
             <mat-form-field appearance="fill">
                 <mat-label>Ort</mat-label>
                 <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
@@ -28,7 +29,7 @@
                   <mat-option value="three">Telefonisch & Online</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary">
+            <button mat-raised-button color="primary" type="submit">
                 <mat-icon aria-hidden="false">search</mat-icon>
                 Suchen
             </button>
@@ -41,7 +42,7 @@
     <div class="start-page">
         <div>
             <h2>Alle Ärzte</h2>
-            <mat-card class="card" *ngFor="let doc of docs; let i = index">
+            <mat-card class="card" *ngFor="let doc of shownDocs; let docIndex = index">
                 <div class="picture">
                     <img src="../../assets/img/{{ doc.img }}">
                     <p>{{doc.insurance}}</p>
