@@ -23,10 +23,11 @@ export class StartpageComponent implements OnInit {
   async loadDocs(){
     this.firestore
     .collection('docs')
-    .valueChanges()
+    .valueChanges({idField: 'customIdName'})
     .subscribe((changes: any) => {
-      console.log(changes);
+      // console.log(changes);
       this.docs = changes;
+      console.log(this.docs.customIdName)
     })
   }
 

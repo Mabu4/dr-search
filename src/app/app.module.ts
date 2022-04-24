@@ -23,8 +23,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
+import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatChipsModule} from '@angular/material/chips';
     AppComponent,
     StartpageComponent,
     DoctorDetailComponent,
-    AddDoctorComponent
+    AddDoctorComponent,
+    EditDoctorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import {MatChipsModule} from '@angular/material/chips';
     AngularFirestoreModule,
     FormsModule,
     MatChipsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),

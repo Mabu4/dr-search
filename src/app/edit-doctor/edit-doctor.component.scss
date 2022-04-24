@@ -11,7 +11,19 @@
     }
     .field-1, .field-3, .field-5, .field-7, .field-9, .field-11, .field-13 {
         margin-right: 0.65rem;
-    } 
+    }
+    .field-5, .field-6 {
+        @media(max-width: 70em){
+            margin-right: 0;
+            width: 100%;
+        }
+    }
+    @media(max-width: 35em){
+        mat-form-field {
+            margin-right: 0;
+            width: 100%;
+        }
+    }
 }
 
 
@@ -20,3 +32,12 @@
         margin-right: 0.65rem;
     }
 }
+
+.button-box {
+    position: relative;
+    .delete-btn {
+        position: absolute;
+        right: 2rem;
+    }
+}
+

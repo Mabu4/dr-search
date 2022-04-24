@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialogRef } from '@angular/material/dialog';
-import { Doc } from 'src/models/doc.class';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-doctor',
-  templateUrl: './add-doctor.component.html',
-  styleUrls: ['./add-doctor.component.scss']
+  selector: 'app-edit-doctor',
+  templateUrl: './edit-doctor.component.html',
+  styleUrls: ['./edit-doctor.component.scss']
 })
-export class AddDoctorComponent implements OnInit {
+export class EditDoctorComponent implements OnInit {
+
+  constructor(private route: Router, public dialogRef: MatDialogRef<EditDoctorComponent>, private firestore: AngularFirestore) { }
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  doctor = new Doc();
-  specialities = ['Allgemeinmediziner'];
-  themes = ['Darmkrebsvorsorge'];
+  doctor: any;
+  docId = '';
   times = ['07:00', '07:15', '07:30', '07:45', '08:00', '08:15', '08:30', '08:45', '09:00', '09:15', '09:30', 
   '09:45', '10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15', '12:30', '12:45', 
   '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00', '15:15', '15:30', '15:45',
@@ -27,34 +28,39 @@ export class AddDoctorComponent implements OnInit {
   '4,0', '4,1', '4,2', '4,3', '4,4', '4,5', '4,6', '4,7', '4,8', '4,9', '5,0', '5,1', '5,2', '5,3', '5,4', '5,5',
   '5,6', '5,7', '5,8', , '5,9', '6,0']
 
-
-  constructor(public dialogRef: MatDialogRef<AddDoctorComponent>, private firestore: AngularFirestore) { }
-
   ngOnInit(): void {
   }
 
-  onNoClick(): void {
+  onNoClick(){
     this.dialogRef.close();
   }
 
-  saveDoc() {
-    this.doctor.specialities = this.specialities;
-    this.doctor.themes = this.themes;
+  saveDoc(){
     this.firestore
     .collection('docs')
-    .add(this.doctor.toJSON());
-    // .then((result: any) => {
-    //   console.log('Adding user finished', result);
-    // });
-    this.dialogRef.close();
+    .doc(this.docId)
+    .update(this.doctor.toJSON())
+    .then(() => {
+      this.dialogRef.close();
+    });
   }
 
+  deleteDoc() {
+    this.firestore
+    .collection('docs')
+    .doc(this.docId)
+    .delete()
+    .then(() => {
+      this.dialogRef.close();
+      this.route.navigate(['/']);
+    });
+  }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
     // Add our fruit
     if (value) {
-      this.specialities.push(value);
+      this.doctor.specialities.push(value);
     }
     // Clear the input value
     event.chipInput!.clear();
@@ -62,9 +68,9 @@ export class AddDoctorComponent implements OnInit {
 
 
   remove(spec): void {
-    const index = this.specialities.indexOf(spec);
+    const index = this.doctor.specialities.indexOf(spec);
     if (index >= 0) {
-      this.specialities.splice(index, 1);
+      this.doctor.specialities.splice(index, 1);
     }
   }
 
@@ -73,7 +79,7 @@ export class AddDoctorComponent implements OnInit {
     const value = (event.value || '').trim();
     // Add our fruit
     if (value) {
-      this.themes.push(value);
+      this.doctor.themes.push(value);
     }
     // Clear the input value
     event.chipInput!.clear();
@@ -81,9 +87,10 @@ export class AddDoctorComponent implements OnInit {
 
 
   removeSecond(theme): void {
-    const index = this.themes.indexOf(theme);
+    const index = this.doctor.themes.indexOf(theme);
     if (index >= 0) {
-      this.themes.splice(index, 1);
+      this.doctor.themes.splice(index, 1);
     }
   }
+
 }

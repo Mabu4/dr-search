@@ -1,7 +1,7 @@
 <div class="headline" mat-dialog-title>
-  <h1>Arzt hinzufügen</h1>
+    <h1>Arzt hinzufügen</h1>
 </div>
-
+  
 <div mat-dialog-content class="dialog-container">
   <mat-form-field class="field-1" appearance="fill">
     <mat-label>Titel</mat-label>
@@ -22,7 +22,7 @@
   <mat-form-field class="field-5" appearance="fill">
     <mat-label>Spezialisierung</mat-label>
     <mat-chip-list #chipList aria-label="Fruit selection">
-      <mat-chip *ngFor="let spec of specialities" (removed)="remove(spec)">
+      <mat-chip *ngFor="let spec of doctor.specialities" (removed)="remove(spec)">
         {{spec}}
         <button matChipRemove>
           <mat-icon>cancel</mat-icon>
@@ -38,7 +38,7 @@
   <mat-form-field class="field-6" appearance="fill">
     <mat-label>Themen</mat-label>
     <mat-chip-list #chipList1 aria-label="Fruit selection">
-      <mat-chip *ngFor="let theme of themes" (removed)="removeSecond(theme)">
+      <mat-chip *ngFor="let theme of doctor.themes" (removed)="removeSecond(theme)">
         {{theme}}
         <button matChipRemove>
           <mat-icon>cancel</mat-icon>
@@ -162,7 +162,11 @@
     </mat-form-field>
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="button-box">
   <button mat-button (click)="onNoClick()">Schließen</button>
   <button mat-button cdkFocusInitial (click)="saveDoc()">Ok</button>
+  <button mat-icon-button class="delete-btn" (click)="deleteDoc()">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>
+  

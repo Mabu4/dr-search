@@ -1,12 +1,24 @@
 <div class="primary-container">
     <div *ngIf="isLoaded">
-        <div class="back-to-list">
-            <button [routerLink]="['/']" mat-icon-button>
-                <mat-icon>arrow_back_ios</mat-icon>
-            </button>
-            <span>
-                Liste
-            </span>
+        <div class="header-links">
+            <div class="back-to-list">
+                <button [routerLink]="['/']" mat-icon-button>
+                    <mat-icon>arrow_back_ios</mat-icon>
+                </button>
+                <span>
+                    Liste
+                </span>
+            </div>
+            <div class="edit-list">
+                <button [matMenuTriggerFor]="menu" mat-icon-button >
+                    <mat-icon aria-hidden="false">settings</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openSettings()">
+                        Bearbeiten
+                    </button>
+                </mat-menu>
+            </div>
         </div>
         <div class="header">
             <div class="top-section">
@@ -35,7 +47,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
         <div class="informations">
             <div class="left-box">
@@ -88,7 +99,7 @@
                     <div>
                         <span>{{doc.wednesdayFrom}}</span>
                         <span>-</span>
-                        <span>{{doc.wedenesdayTo}}</span>
+                        <span>{{doc.wednesdayTo}}</span>
                     </div>
                     
                 </div>
