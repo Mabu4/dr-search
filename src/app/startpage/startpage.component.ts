@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDoctorComponent } from '../add-doctor/add-doctor.component';
-import {FormControl, NgForm} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { Doc } from 'src/models/doc.class';
@@ -24,8 +24,6 @@ export class StartpageComponent implements OnInit {
   themes = [];
   filteredCitys: Observable<Doc[]>;
   filteredThemes: Observable<Doc[]>;
-  choosenTheme: string;
-  choosenCity: string;
 
   ngOnInit(): void {
     this.loadDocs();
@@ -57,6 +55,7 @@ export class StartpageComponent implements OnInit {
 
 
   filterElements(){
+
     for (let i = 0; i < this.docs.length; i++) {
       let doc = this.docs[i];
       this.citys.push({city: doc.city});
@@ -98,14 +97,38 @@ export class StartpageComponent implements OnInit {
   }
 
 
-  filterList(searchForm: NgForm) {
-    console.log(searchForm.value);
-    console.log(this.docs);
-    console.log(this.choosenCity);
-    let matchingCitys = this.docs.filter((doc) => doc.city == this.choosenCity);
-    let matchingThemes = this.docs.filter((item) => item.themes == this.choosenTheme);
-    let matchingSpecialities = this.docs.filter((item) => item.specialities == this.choosenTheme);
-    console.log(matchingCitys);
+  filterList(theme, city) {
+    if(theme.length >= 1 && city.length == 0){
+      let themes = this.docs.filter((doc) => doc.themes.includes(theme));
+      let specialty = this.docs.filter((doc) => doc.specialities.includes(theme));
+      let unfilteredDocs = [...themes, ...specialty];
+      this.removeDuplicateUsingFilter(unfilteredDocs);
+    } else if (city.length >= 1 && theme.length == 0){
+      let citys = this.docs.filter((doc) => doc.city == city);
+      this.shownDocs = citys;
+    } else if (city.length >= 1 && theme.length >= 1){
+      let themes = this.docs.filter((doc) => doc.themes.includes(theme));
+      let specialty = this.docs.filter((doc) => doc.specialities.includes(theme));
+      let citys = this.docs.filter((doc) => doc.city == city);
+      let unfilteredDocs = [...themes, ...specialty, ...citys];
+      this.findDuplicatesUsingFilter(unfilteredDocs);
+    } else if (city.length == 0 && theme.length == 0){
+      this.shownDocs = this.docs;
+    }
   }
+
+  removeDuplicateUsingFilter(arr){
+    this.shownDocs = arr.filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+    });
+  }
+
+  findDuplicatesUsingFilter(arr){
+    let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) !== index);
+    let duplicates = findDuplicates(arr);
+    console.log(duplicates);
+    this.shownDocs = duplicates;
+  }
+
 
 }
