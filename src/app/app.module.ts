@@ -27,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import { EditDoctorComponent } from './edit-doctor/edit-doctor.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DialogThemesComponent } from './dialog-themes/dialog-themes.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     StartpageComponent,
     DoctorDetailComponent,
     AddDoctorComponent,
-    EditDoctorComponent
+    EditDoctorComponent,
+    DialogThemesComponent
   ],
   imports: [
     BrowserModule,

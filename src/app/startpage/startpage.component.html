@@ -22,13 +22,13 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Buchung</mat-label>
-                <mat-select>
-                  <mat-option value="one">Telefonisch</mat-option>
-                  <mat-option value="two">Online</mat-option>
-                  <mat-option value="three">Telefonisch & Online</mat-option>
+                <mat-select #booking name="booking">
+                  <mat-option value="telephone">Telefonisch</mat-option>
+                  <mat-option value="online">Online</mat-option>
+                  <mat-option value="both">Telefonisch & Online</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="filterList(theme.value, city.value)">
+            <button mat-raised-button color="primary" (click)="filterList(theme.value, city.value, booking.value)">
                 <mat-icon aria-hidden="false">search</mat-icon>
                 Suchen
             </button>
@@ -54,7 +54,7 @@
                         <span>{{doc.zipCode}}</span> {{doc.city}}
                     </p>
                     <div class="description">
-                        <div class="profile">
+                        <div [routerLink]="['/doctor-detail/' + doc.customIdName]" class="profile">
                             <mat-icon>assignment_ind</mat-icon>
                             <div>Profil</div>
                         </div>
@@ -78,7 +78,9 @@
                             </div>
                             
                         </div>
-                        <mat-icon>more_horiz</mat-icon>
+                        <button mat-icon-button (click)="openDialogThemes(doc.customIdName)">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
                     </div>
                 </div>
                 <div class="right-section">
